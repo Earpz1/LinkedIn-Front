@@ -48,7 +48,7 @@ const NewsFeedItem = ({ post }) => {
       const options = {
         method: 'DELETE',
       }
-      const fetchURL = `https://fs0422-epicode-build-week-4-production.up.railway.app/posts/${post._id}/like`
+      const fetchURL = `${process.env.BACKEND_URL}posts/${post._id}/like`
 
       try {
         let response = await fetch(fetchURL, options)
@@ -66,7 +66,7 @@ const NewsFeedItem = ({ post }) => {
         },
       }
 
-      const fetchURL = `https://fs0422-epicode-build-week-4-production.up.railway.app/posts/${post._id}/like`
+      const fetchURL = `${process.env.BACKEND_URL}posts/${post._id}/like`
 
       try {
         const response = await fetch(fetchURL, options)

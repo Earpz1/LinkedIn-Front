@@ -1,5 +1,5 @@
-import { NavDropdown } from "react-bootstrap";
-import { BsFillGrid3X3GapFill } from "react-icons/bs";
+import { NavDropdown } from 'react-bootstrap'
+import { BsFillGrid3X3GapFill } from 'react-icons/bs'
 
 const TopNavWork = () => {
   return (
@@ -20,6 +20,6 @@ const TopNavWork = () => {
         </a>
       </div>
     </div>
-  );
-};
-export default TopNavWork;
+  )
+}
+export default TopNavWork

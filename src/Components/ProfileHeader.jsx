@@ -1,10 +1,10 @@
-import { useSelector } from "react-redux";
-import Button from "react-bootstrap/Button";
-import EditModal from "./EditModal";
+import { useSelector } from 'react-redux'
+import Button from 'react-bootstrap/Button'
+import EditModal from './EditModal'
 
 const ProfileHeader = () => {
-  const usersData = useSelector((state) => state.user.currentUser);
-  const usersLoaded = useSelector((state) => state.user.usersLoaded);
+  const usersData = useSelector((state) => state.user.currentUser)
+  const usersLoaded = useSelector((state) => state.user.usersLoaded)
 
   return (
     <>
@@ -52,7 +52,7 @@ const ProfileHeader = () => {
                 More
               </button>
               <a
-                href={`${process.env.REACT_APP_BE_URL}users/profile/${process.env.REACT_APP_MY_PROFILE_ID}/CV`}
+                href={`${process.env.BACKEND_URL}users/profile/63ce71322d24291c669fab27/CV`}
               >
                 <button id="moreBtn" className="rounded-pill bottomNavButtons">
                   Get CV
@@ -66,7 +66,7 @@ const ProfileHeader = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default ProfileHeader;
+export default ProfileHeader

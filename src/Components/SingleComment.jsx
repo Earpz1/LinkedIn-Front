@@ -34,7 +34,7 @@ function SingleComment({ comment, postID }) {
         'Content-type': 'application/json',
       },
     }
-    const fetchURL = `https://fs0422-epicode-build-week-4-production.up.railway.app/posts/${postID}/comment/${comment._id}`
+    const fetchURL = `${process.env.BACKEND_URL}posts/${postID}/comment/${comment._id}`
     try {
       let response = await fetch(fetchURL, options)
       if (response.ok) {
@@ -51,7 +51,7 @@ function SingleComment({ comment, postID }) {
     const options = {
       method: 'DELETE',
     }
-    const fetchURL = `https://fs0422-epicode-build-week-4-production.up.railway.app/posts/${postID}/comment/${commentID}`
+    const fetchURL = `${process.env.BACKEND_URL}posts/${postID}/comment/${commentID}`
 
     try {
       let response = await fetch(fetchURL, options)
@@ -64,7 +64,7 @@ function SingleComment({ comment, postID }) {
     const options = {
       method: 'GET',
     }
-    const fetchURL = `https://fs0422-epicode-build-week-4-production.up.railway.app/posts/${postID}/comment/`
+    const fetchURL = `${process.env.BACKEND_URL}posts/${postID}/comment/`
 
     try {
       let response = await fetch(fetchURL, options)

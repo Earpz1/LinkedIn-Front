@@ -36,12 +36,7 @@ const Home = () => {
   const [hasMore, setHasMore] = useState(true)
   const [slice, setSlice] = useState(8)
 
-  //const profilePostsList = useSelector((state) => state.posts.posts.profilePosts.slice().reverse());
-
   const profilePosts = useSelector((state) => state.posts.posts.profilePosts)
-
-  //console.log("the profile posts are: ", profilePostsList);
-  //console.log("the profile posts are: ", reverseProfilePostsList);
 
   useEffect(() => {
     setTimeout(() => {

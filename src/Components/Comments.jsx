@@ -34,7 +34,7 @@ function Comments({ post }) {
     const options = {
       method: 'GET',
     }
-    const fetchURL = `https://fs0422-epicode-build-week-4-production.up.railway.app/posts/${postID}/comment`
+    const fetchURL = `${process.env.BACKEND_URL}posts/${postID}/comment`
 
     try {
       let response = await fetch(fetchURL, options)

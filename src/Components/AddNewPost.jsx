@@ -67,7 +67,7 @@ function AddNewPost() {
         'Content-type': 'application/json',
       },
     }
-    const fetchURL = `https://fs0422-epicode-build-week-4-production.up.railway.app/posts/`
+    const fetchURL = `${process.env.BACKEND_URL}posts/`
 
     try {
       let response = await fetch(fetchURL, options)
@@ -77,7 +77,7 @@ function AddNewPost() {
         const post = await response.json()
 
         if (isFilePicked) {
-          const url = `https://fs0422-epicode-build-week-4-production.up.railway.app/posts/${post._id}/uploadPostImage`
+          const url = `${process.env.BACKEND_URL}posts/${post._id}/uploadPostImage`
           const formData = new FormData()
           formData.append('postPhoto', selectedFile)
           const config = {
