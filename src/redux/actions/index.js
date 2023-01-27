@@ -94,7 +94,7 @@ export const setExperiencesLoaded = () => {
 
 export const fetchUsers = () => {
   return async (dispatch, getState) => {
-    const fetchURL = `${process.env.BACKEND_URL}users`
+    const fetchURL = `${process.env.REACT_APP_BACKEND_URL}users`
 
     try {
       let response = await fetch(fetchURL)
@@ -119,8 +119,7 @@ export const fetchProfile = () => {
     const options = {
       method: 'GET',
     }
-    const myProfileId = process.env.REACT_APP_MY_PROFILE_ID
-    const fetchURL = `${process.env.BACKEND_URL}users/me/63ce71322d24291c669fab27`
+    const fetchURL = `${process.env.REACT_APP_BACKEND_URL}users/me/63ce71322d24291c669fab27`
 
     try {
       let response = await fetch(fetchURL, options)
@@ -138,7 +137,7 @@ export const fetchExperiences = (userID) => {
   return async (dispatch, getState) => {
     console.log('We are fetching the users experiences here')
     console.log(userID)
-    const fetchURL = `${process.env.BACKEND_URL}users/${userID}/experiences`
+    const fetchURL = `${process.env.REACT_APP_BACKEND_URL}users/${userID}/experiences`
 
     try {
       let response = await fetch(fetchURL)
@@ -160,13 +159,10 @@ export const editUser = (user) => {
       body: JSON.stringify({ user }),
       headers: {
         'Content-type': 'application/json',
-        // Authorization:
-        //   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk2ZjBhOWM5NmRmYjAwMTUyMWE1YmMiLCJpYXQiOjE2NzA4MzYzOTMsImV4cCI6MTY3MjA0NTk5M30.tjYtW0usDncqSVyv5tqHhm6jzx297N87wMwUmb9BuAs",
       },
     }
-    // const fetchURL = "https://striveschool-api.herokuapp.com/api/profile/";
-    // const fetchURL = `${process.env.REACT_APP_BE_URL}/users/${user._id}`;
-    const fetchURL = `${process.env.BACKEND_URL}users/63ce71322d24291c669fab27`
+
+    const fetchURL = `${process.env.REACT_APP_BACKEND_URL}users/63ce71322d24291c669fab27`
     console.log('user._id from editing my profile', user._id)
 
     try {
@@ -192,12 +188,8 @@ export const getContactExperiences = (contactId) => {
     console.log("getting all the contact's experiences")
     const options = {
       method: 'GET',
-      headers: {
-        Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk2ZjBhOWM5NmRmYjAwMTUyMWE1YmMiLCJpYXQiOjE2NzA4MzYzOTMsImV4cCI6MTY3MjA0NTk5M30.tjYtW0usDncqSVyv5tqHhm6jzx297N87wMwUmb9BuAs',
-      },
     }
-    const fetchURL = `${process.env.BACKEND_URL}users/${contactId}/experiences`
+    const fetchURL = `${process.env.REACT_APP_BACKEND_URL}users/${contactId}/experiences`
 
     try {
       const response = await fetch(fetchURL, options)
@@ -225,7 +217,7 @@ export const fetchPostsList = () => {
     const options = {
       method: 'GET',
     }
-    const fetchURL = `${process.env.BACKEND_URL}posts`
+    const fetchURL = `${process.env.REACT_APP_BACKEND_URL}posts`
 
     try {
       let response = await fetch(fetchURL, options)
