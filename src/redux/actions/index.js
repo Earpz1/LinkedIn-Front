@@ -225,7 +225,7 @@ export const fetchPostsList = () => {
     const options = {
       method: 'GET',
     }
-    const fetchURL = `${process.env.BACKEND_URL}/posts`
+    const fetchURL = `${process.env.BACKEND_URL}posts`
 
     try {
       let response = await fetch(fetchURL, options)
