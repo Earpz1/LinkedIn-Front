@@ -1,15 +1,15 @@
-import { Col, Container, Row } from "react-bootstrap";
-import { AiFillQuestionCircle } from "react-icons/ai";
-import { GoGear } from "react-icons/go";
-import { BsChevronCompactDown } from "react-icons/bs";
-import { useLocation } from "react-router";
+import { Col, Container, Row } from 'react-bootstrap'
+import { AiFillQuestionCircle } from 'react-icons/ai'
+import { GoGear } from 'react-icons/go'
+import { BsChevronCompactDown } from 'react-icons/bs'
+import { useLocation } from 'react-router'
 
 const LinkedInFooter = () => {
-  const location = useLocation();
+  const location = useLocation()
 
   return (
     <footer>
-      {location.pathname === "/Profile" ? (
+      {location.pathname === '/Profile' ? (
         <Container>
           <div id="footerLogo" className="mb-2">
             <svg
@@ -30,7 +30,7 @@ const LinkedInFooter = () => {
               </g>
             </svg>
           </div>
-          <Row style={{ color: "#5e5e5e" }} className="footerLinks">
+          <Row style={{ color: '#5e5e5e' }} className="footerLinks">
             <Col>
               <Row>
                 <Col>
@@ -96,7 +96,7 @@ const LinkedInFooter = () => {
                       <a href="#" className="m-0 footerBoldText">
                         Questions?
                       </a>
-                      <p style={{ fontSize: "10pt", color: "gray" }}>
+                      <p style={{ fontSize: '10pt', color: 'gray' }}>
                         Visit our Help Center
                       </p>
                     </div>
@@ -111,7 +111,7 @@ const LinkedInFooter = () => {
                       <a href="#" className="m-0 footerBoldText">
                         Manage your account and privacy
                       </a>
-                      <p style={{ fontSize: "10pt", color: "gray" }}>
+                      <p style={{ fontSize: '10pt', color: 'gray' }}>
                         Go to your settings
                       </p>
                     </div>
@@ -121,11 +121,11 @@ const LinkedInFooter = () => {
                   <label
                     for="footerLangSelector"
                     className="d-block mb-0"
-                    style={{ fontSize: "10pt", color: "gray" }}
+                    style={{ fontSize: '10pt', color: 'gray' }}
                   >
                     Select Language
                   </label>
-                  <select id="footerLangSelector" style={{ width: "100%" }}>
+                  <select id="footerLangSelector" style={{ width: '100%' }}>
                     <option>English (English)</option>
                     <option>Italiano (Italian)</option>
                     <option>Espanol (Spanish)</option>
@@ -135,7 +135,7 @@ const LinkedInFooter = () => {
             </Col>
           </Row>
           <div>
-            <p style={{ fontSize: "10pt", color: "gray" }} className="py-3 m-0">
+            <p style={{ fontSize: '10pt', color: 'gray' }} className="py-3 m-0">
               LinkedIn Corporation © 2022
             </p>
           </div>
@@ -144,7 +144,7 @@ const LinkedInFooter = () => {
         <Container>
           <Row>
             <Col>
-              <Row className="altFooterLinks">
+              <Row className="altFooterLinks mt-2 ml-2">
                 <Col xl={3} className="altFooterLinkItems">
                   <a href="#">About</a>
                 </Col>
@@ -175,7 +175,7 @@ const LinkedInFooter = () => {
                   <a href="#">more</a>
                 </Col>
               </Row>
-              <div>
+              <div className="ml-5 mt-2">
                 <div id="littleLogo" className="mb-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -195,10 +195,10 @@ const LinkedInFooter = () => {
                     </g>
                   </svg>
                   <p
-                    style={{ fontSize: "10pt", color: "gray" }}
+                    style={{ fontSize: '10pt', color: 'gray' }}
                     className="py-3 m-0 d-inline"
                   >
-                    LinkedIn Corporation © 2022
+                    LinkedIn Corporation
                   </p>
                 </div>
               </div>
@@ -207,7 +207,7 @@ const LinkedInFooter = () => {
         </Container>
       )}
     </footer>
-  );
-};
+  )
+}
 
-export default LinkedInFooter;
+export default LinkedInFooter

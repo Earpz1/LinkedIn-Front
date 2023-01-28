@@ -1,11 +1,25 @@
 import { Button, NavDropdown } from 'react-bootstrap'
 import { HiHome, HiUserCircle } from 'react-icons/hi'
 import { useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect, useState } from 'react'
+import { fetchProfile } from '../redux/actions'
 
 const TopNavProfile = () => {
+  const dispatch = useDispatch()
   const navigate = useNavigate()
-  // const currentUserData = useSelector((state) => state.user.currentUser)
+
+  const [profileLoaded, setProfileLoaded] = useState(false)
+
+  useEffect(() => {
+    dispatch(fetchProfile())
+
+    setTimeout(() => {
+      setProfileLoaded(true)
+    }, 1500)
+  }, [])
+
+  const currentUserData = useSelector((state) => state.user.currentUser)
 
   return (
     <>
@@ -16,17 +30,21 @@ const TopNavProfile = () => {
         <div className="dropdown-item">
           <div className="d-flex flex-column firstnavitem">
             <div className="d-flex mb-2">
-              <div>
-                <HiUserCircle size={48} />
-              </div>
-              <div>
-                <p className="m-0">
-                  {/* {currentUserData.name} {currentUserData.surname} */}
-                </p>
-                <p className="m-0">
-                  {/* <small>{currentUserData.title}</small> */}
-                </p>
-              </div>
+              {profileLoaded && (
+                <div>
+                  <img
+                    src={currentUserData.image}
+                    className="drop-down-avatar"
+                  />
+                </div>
+              )}
+              {profileLoaded && (
+                <div>
+                  <p className="m-0 mt-2">
+                    {currentUserData.name} {currentUserData.surname}
+                  </p>
+                </div>
+              )}
             </div>
             <Button
               className="rounded-pill"

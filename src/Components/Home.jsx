@@ -80,7 +80,6 @@ const Home = () => {
   useEffect(() => {
     dispatch(fetchProfile())
     dispatch(fetchUsers())
-    dispatch(fetchProfile())
     dispatch(fetchPostsList())
   }, [usersLoaded, profilePosts])
 

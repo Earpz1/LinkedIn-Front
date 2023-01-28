@@ -504,6 +504,7 @@ NEW SYLING FOR TopNav - search & deleteButton
 }
 #top-left-home-userprofile-pic {
   position: absolute;
+  margin-left: -15px;
   top: 40px;
   left: 99px;
   width: 80px;
@@ -615,6 +616,12 @@ span {
   border-radius: 50%;
   margin-left: 10px;
   margin-right: 10px;
+}
+
+.drop-down-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 }
 
 .new-post-form {
