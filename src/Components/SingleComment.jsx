@@ -1,13 +1,21 @@
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useState } from 'react'
-import { Button } from 'react-bootstrap'
+import { Button, Spinner } from 'react-bootstrap'
 import { useEffect } from 'react'
+import { fetchComments } from '../redux/actions'
 
 function SingleComment({ comment, postID }) {
+  const dispatch = useDispatch()
   const [postEdit, setPostEdit] = useState(false)
-  const [commentText, setcommentText] = useState(comment.comment)
   const [commentEdit, setcommentEdit] = useState('This is the edit function')
+  const [commentDeleted, setCommentDelete] = useState(false)
+  const [editLoading, setEditLoading] = useState(false)
+  const [deleteLoading, setDeleteLoading] = useState(false)
   const currentUserData = useSelector((state) => state.user.currentUser)
+
+  useEffect(() => {
+    dispatch(fetchComments(postID))
+  }, [commentDeleted])
 
   const handleCommentEdit = (e) => {
     setcommentEdit(e.target.value)
@@ -34,15 +42,16 @@ function SingleComment({ comment, postID }) {
         'Content-type': 'application/json',
       },
     }
-    const fetchURL = `${process.env.BACKEND_URL}posts/${postID}/comment/${comment._id}`
+    const fetchURL = `${process.env.REACT_APP_BACKEND_URL}posts/${postID}/comment/${comment._id}`
     try {
       let response = await fetch(fetchURL, options)
       if (response.ok) {
+        setEditLoading((current) => !current)
         setTimeout(() => {
-          fetchComments(comment._id)
-          setcommentText(commentEdit)
+          dispatch(fetchComments(postID))
+          setEditLoading((current) => !current)
           setPostEdit(false)
-        }, 1000)
+        }, 1500)
       }
     } catch (error) {}
   }
@@ -51,27 +60,15 @@ function SingleComment({ comment, postID }) {
     const options = {
       method: 'DELETE',
     }
-    const fetchURL = `${process.env.BACKEND_URL}posts/${postID}/comment/${commentID}`
+    const fetchURL = `${process.env.REACT_APP_BACKEND_URL}posts/${postID}/comment/${commentID}`
 
     try {
       let response = await fetch(fetchURL, options)
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-  const fetchComments = async (commentID) => {
-    const options = {
-      method: 'GET',
-    }
-    const fetchURL = `${process.env.BACKEND_URL}posts/${postID}/comment/`
-
-    try {
-      let response = await fetch(fetchURL, options)
-
-      if (response.ok) {
-        const comments = await response.json()
-      }
+      setDeleteLoading((current) => !current)
+      setTimeout(() => {
+        setDeleteLoading((current) => !current)
+        setCommentDelete((current) => !current)
+      }, 1500)
     } catch (error) {
       console.log(error)
     }
@@ -89,7 +86,7 @@ function SingleComment({ comment, postID }) {
           <p className="pl-3 pt-1 commentName">
             {comment.userId.name} {comment.userId.surname}
           </p>
-          {postEdit === true && (
+          {postEdit === true && editLoading !== true && (
             <>
               <input
                 type="text"
@@ -102,8 +99,22 @@ function SingleComment({ comment, postID }) {
               </Button>
             </>
           )}
-          {postEdit === false && (
-            <span className="pl-3 pt-1 mb-3 commentText">{commentText}</span>
+          {editLoading === true && (
+            <Spinner
+              animation="border"
+              role="status"
+              className="ml-5 my-3"
+            ></Spinner>
+          )}
+          {postEdit === false && deleteLoading !== true && (
+            <span className="pl-3 pt-1 mb-3 commentText">
+              {comment.comment}
+            </span>
+          )}
+          {deleteLoading === true && (
+            <span className="pl-3 pt-1 mb-3 commentText">
+              <Spinner animation="border" role="status"></Spinner>
+            </span>
           )}
         </div>
       </div>

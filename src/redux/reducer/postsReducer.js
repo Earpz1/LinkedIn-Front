@@ -3,6 +3,7 @@ import {
   GET_POSTS_LIST,
   POSTS_LOADED,
   PROFILE_POSTS_LIST,
+  GET_COMMENTS,
 } from '../actions'
 
 const initialState = {
@@ -11,6 +12,7 @@ const initialState = {
     currentPost: null,
     postsLoaded: null,
     profilePosts: [],
+    comments: [],
   },
 }
 
@@ -49,6 +51,15 @@ const postsReducer = (state = initialState, action) => {
         posts: {
           ...state.posts,
           postsLoaded: action.payload,
+        },
+      }
+
+    case GET_COMMENTS:
+      return {
+        ...state,
+        comments: {
+          ...state.comments,
+          comments: action.payload,
         },
       }
 

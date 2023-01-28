@@ -12,6 +12,8 @@ export const GET_POSTS_LIST = 'GET_POSTS_LIST'
 export const POSTS_LOADED = 'POSTS_LOADED'
 export const SET_EXPERIENCES_LOADED = 'SET_EXPERIENCES_LOADED'
 export const PROFILE_POSTS_LIST = 'PROFILE_POSTS_LIST'
+export const GET_COMMENTS = 'GET_COMMENTS'
+export const COMMENT_SUBMITTED = 'COMMENT_SUBMITTED'
 
 export const profilePostsListAction = (postedPost) => {
   return {
@@ -78,6 +80,12 @@ export const getCurrentPostAction = (post) => {
   }
 }
 
+export const getComments = (comments) => {
+  return {
+    type: GET_COMMENTS,
+    payload: comments,
+  }
+}
 export const getPostsListAction = (postsList) => {
   return {
     type: GET_POSTS_LIST,
@@ -111,6 +119,25 @@ export const fetchUsers = () => {
     } catch (error) {
       console.log(error)
     }
+  }
+}
+
+export const fetchComments = (postID) => {
+  return async (dispatch, getState) => {
+    const options = {
+      method: 'GET',
+    }
+
+    const fetchURL = `${process.env.REACT_APP_BACKEND_URL}posts/${postID}/comment`
+
+    try {
+      let response = await fetch(fetchURL, options)
+
+      if (response.ok) {
+        let comments = await response.json()
+        dispatch(getComments(comments))
+      }
+    } catch (error) {}
   }
 }
 

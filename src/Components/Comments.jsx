@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { nextDay } from 'date-fns/esm'
 import { useEffect } from 'react'
 import SingleComment from './SingleComment'
+import { fetchComments } from '../redux/actions'
 
 function Comments({ post }) {
   const dispatch = useDispatch()
@@ -13,46 +14,25 @@ function Comments({ post }) {
   const [postText, setPostText] = useState('')
   const currentUserData = useSelector((state) => state.user.currentUser)
   const [comment, setComment] = useState('')
-  const [postsComments, setPostsComments] = useState('')
+  const comments = useSelector((state) => state.posts.comments)
   const postID = post._id
   const [commentsLoaded, setCommentsLoaded] = useState(false)
   const [commentSubmitted, setCommentSubmitted] = useState(false)
 
   useEffect(() => {
-    fetchComments()
+    dispatch(fetchComments(post._id))
+
+    setTimeout(() => {
+      setCommentsLoaded(true)
+    }, 1000)
   }, [])
 
   useEffect(() => {
-    fetchComments()
+    dispatch(fetchComments(post._id))
   }, [commentSubmitted])
 
   const handleChange = (e) => {
     setComment(e.target.value)
-  }
-
-  const fetchComments = async () => {
-    const options = {
-      method: 'GET',
-    }
-    const fetchURL = `${process.env.BACKEND_URL}posts/${postID}/comment`
-
-    try {
-      let response = await fetch(fetchURL, options)
-
-      if (response.ok) {
-        const comments = await response.json()
-        setTimeout(() => {
-          setPostsComments(comments)
-          if (commentsLoaded === false) {
-            setCommentsLoaded(true)
-          } else {
-            setCommentsLoaded(false)
-          }
-        }, 500)
-      }
-    } catch (error) {
-      console.log(error)
-    }
   }
 
   const submitComment = async (event) => {
@@ -79,13 +59,9 @@ function Comments({ post }) {
         const post = await response.json()
         setComment('')
         setTimeout(() => {
+          dispatch(fetchComments(postID))
           setCommentsLoaded(true)
         }, 1000)
-        if (commentSubmitted === false) {
-          setCommentSubmitted(true)
-        } else {
-          setCommentSubmitted(false)
-        }
       }
     } catch (error) {
       console.log(error)
@@ -116,8 +92,12 @@ function Comments({ post }) {
         </Button>
       )}
       {commentsLoaded &&
-        postsComments.map((comment) => (
-          <SingleComment comment={comment} key={comment._id} postID={postID} />
+        comments.comments.map((comment) => (
+          <SingleComment
+            comment={comment}
+            key={comment._id}
+            postID={post._id}
+          />
         ))}
     </div>
   )

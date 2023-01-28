@@ -34,55 +34,6 @@ const NewsFeedItem = ({ post }) => {
     }
   }
 
-  const handleLikes = async () => {
-    const alreadyLiked = likes.some((like) => {
-      if (like._id === currentUserData._id) {
-        return true
-      }
-
-      return false
-    })
-    console.log(alreadyLiked)
-
-    if (alreadyLiked === true) {
-      const options = {
-        method: 'DELETE',
-      }
-      const fetchURL = `${process.env.BACKEND_URL}posts/${post._id}/like`
-
-      try {
-        let response = await fetch(fetchURL, options)
-      } catch (error) {
-        console.log(error)
-      }
-    } else {
-      const like = { userId: currentUserData._id }
-
-      const options = {
-        method: 'POST',
-        body: JSON.stringify(like),
-        headers: {
-          'Content-type': 'application/json',
-        },
-      }
-
-      const fetchURL = `${process.env.BACKEND_URL}posts/${post._id}/like`
-
-      try {
-        const response = await fetch(fetchURL, options)
-        if (response.ok) {
-          console.log(`Post liked`)
-        }
-      } catch (error) {}
-    }
-  }
-
-  const showLikes = () => {
-    const options = {
-      method: 'GET',
-    }
-  }
-
   return (
     <>
       <div className="news-feed-post mt-3">
@@ -166,7 +117,7 @@ const NewsFeedItem = ({ post }) => {
           </div>
           <hr className="bottom-post-divider" />
           <div className="post-action-buttons d-flex justify-content-between w-100 mx-3">
-            <span className="footer-icons-new-post" onClick={handleLikes}>
+            <span className="footer-icons-new-post">
               {liked ? <AiFillLike /> : <AiOutlineLike />} Like
             </span>
             <span
