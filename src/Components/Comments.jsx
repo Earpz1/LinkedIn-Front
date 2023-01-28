@@ -50,7 +50,7 @@ function Comments({ post }) {
         'Content-type': 'application/json',
       },
     }
-    const fetchURL = `https://fs0422-epicode-build-week-4-production.up.railway.app/posts/${postID}/comment`
+    const fetchURL = `${process.env.REACT_APP_BACKEND_URL}posts/${postID}/comment`
 
     try {
       let response = await fetch(fetchURL, options)
