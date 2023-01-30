@@ -1,27 +1,27 @@
-import { Container } from "react-bootstrap";
-import { HiUserCircle } from "react-icons/hi";
-import { useScrollPosition } from "../redux/actions/useScrollPosition";
-import { useSelector } from "react-redux";
-import { useLocation } from "react-router";
+import { Container } from 'react-bootstrap'
+import { HiUserCircle } from 'react-icons/hi'
+import { useScrollPosition } from '../redux/actions/useScrollPosition'
+import { useSelector } from 'react-redux'
+import { useLocation } from 'react-router'
 
 const HiddenNav = () => {
-  const usersData = useSelector((state) => state.user.currentUser);
-  const scrollPosition = useScrollPosition();
-  const location = useLocation();
+  const usersData = useSelector((state) => state.user.currentUser)
+  const scrollPosition = useScrollPosition()
+  const location = useLocation()
 
   return (
     <div
       id="NavBottom"
       className={
-        location.pathname === "/Profile" && scrollPosition > 400
-          ? "translateYAnimation"
-          : ""
+        location.pathname === '/Profile' && scrollPosition > 400
+          ? 'translateYAnimation'
+          : ''
       }
     >
       {usersData !== null && (
         <Container>
           <div className="d-flex justify-content-between">
-            <div id="bottomNavLeft" className="d-flex align-itmes-center">
+            <div id="bottomNavLeft" className="d-flex align-items-center">
               <div className="d-flex align-items-center">
                 <div id="bottomNavProfilePicBox">
                   <img
@@ -34,14 +34,14 @@ const HiddenNav = () => {
               <div
                 id="bottomNavUserInfoBox"
                 className="ml-3 d-flex flex-column justify-content-center"
-                style={{ lineHeight: "16px" }}
+                style={{ lineHeight: '16px' }}
               >
-                <p className="m-0" style={{ fontWeight: "500" }}>
+                <p className="m-0" style={{ fontWeight: '500' }}>
                   {usersData.name} {usersData.surname}
                 </p>
                 <p
                   className="m-0"
-                  style={{ fontSize: "10pt", fontWeight: "300" }}
+                  style={{ fontSize: '10pt', fontWeight: '300' }}
                 >
                   {usersData.title}
                 </p>
@@ -77,7 +77,7 @@ const HiddenNav = () => {
         </Container>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default HiddenNav;
+export default HiddenNav

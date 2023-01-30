@@ -7,7 +7,7 @@ const ProfileRight = () => {
   const usersSecond = usersList[0]
   const areUsersLoaded = useSelector((state) => state.user.usersLoaded)
   return (
-    <div id="profileRight" className="ml-4">
+    <div id="profileRight" className="ml-4 d-sm-none d-md-block">
       <p>
         <strong>Add to your feed now</strong>
       </p>

@@ -16,13 +16,12 @@ const RightSideUser = ({ user }) => {
         to={`/${user.name}-${user.surname}`}
         onClick={() => {
           dispatch(getContactAction(user))
-          // dispatch(userNowAction(user));
 
           dispatch(getContactExperiences(user._id))
         }}
       >
         <div id="rightSideUserSingleElement">
-          <div className="d-flex" style={{ gap: '5px' }}>
+          <div className="d-flex d-sm-none d-md-block" style={{ gap: '5px' }}>
             <div
               style={{
                 width: '50px',

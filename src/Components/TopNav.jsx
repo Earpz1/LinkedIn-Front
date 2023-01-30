@@ -152,7 +152,9 @@ const TopNav = () => {
           </div>
         </Container>
       </Navbar>
-      <HiddenNav />
+      <div ClassName="d-xs-none d-sm-block">
+        <HiddenNav />
+      </div>
     </>
   )
 }
