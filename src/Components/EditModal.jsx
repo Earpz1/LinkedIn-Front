@@ -89,7 +89,7 @@ function EditModal({ data }) {
         'Content-type': 'application/json',
       },
     }
-    const fetchURL = `$${process.env.BACKEND_URL}users/63ce71322d24291c669fab27`
+    const fetchURL = `$${process.env.REACT_APP_BACKEND_URL}users/63ce71322d24291c669fab27`
 
     try {
       let response = await fetch(fetchURL, options)
@@ -97,7 +97,7 @@ function EditModal({ data }) {
         let usersData = await response.json()
 
         if (isFilePicked) {
-          const url = `${process.env.BACKEND_URL}users/${usersData._id}/picture`
+          const url = `${process.env.REACT_APP_BACKEND_URL}users/${usersData._id}/picture`
           const formData = new FormData()
           formData.append('userPicture', selectedFile)
           const config = {
@@ -130,7 +130,7 @@ function EditModal({ data }) {
           <BsPencil size={20} />
         </Button>
         <a
-          href={`${process.env.BACKEND_URL}profile/${usersData.username}/experiences/CSV`}
+          href={`${process.env.REACT_APP_BACKEND_URL}profile/${usersData.username}/experiences/CSV`}
         >
           <button id="moreBtn" className="rounded-pill bottomNavButtons">
             Get Experiences as CSV

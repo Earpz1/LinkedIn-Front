@@ -92,7 +92,7 @@ function EditExperienceModal(props) {
           'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk2ZjBhOWM5NmRmYjAwMTUyMWE1YmMiLCJpYXQiOjE2NzA4MzYzOTMsImV4cCI6MTY3MjA0NTk5M30.tjYtW0usDncqSVyv5tqHhm6jzx297N87wMwUmb9BuAs',
       },
     }
-    const fetchURL = `${process.env.BACKEND_URL}users/${usersData._id}/experiences/${props.experience._id}`
+    const fetchURL = `${process.env.REACT_APP_BACKEND_URL}users/${usersData._id}/experiences/${props.experience._id}`
 
     try {
       let response = await fetch(fetchURL, options)
@@ -102,7 +102,7 @@ function EditExperienceModal(props) {
         let usersData = await response.json()
 
         if (isFilePicked) {
-          const url = `https://fs0422-epicode-build-week-4-production.up.railway.app/profile/${usersData._id}/experiences/${props.experience._id}/picture`
+          const url = `${process.env.REACT_APP_BACKEND_URL}profile/${usersData._id}/experiences/${props.experience._id}/picture`
           const formData = new FormData()
           formData.append('picture', selectedFile)
           const config = {
@@ -137,7 +137,7 @@ function EditExperienceModal(props) {
           'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk2ZjBhOWM5NmRmYjAwMTUyMWE1YmMiLCJpYXQiOjE2NzA4MzYzOTMsImV4cCI6MTY3MjA0NTk5M30.tjYtW0usDncqSVyv5tqHhm6jzx297N87wMwUmb9BuAs',
       },
     }
-    const fetchURL = `https://fs0422-epicode-build-week-4-production.up.railway.app/users/${usersData._id}/experiences/${props.experience._id}`
+    const fetchURL = `${process.env.REACT_APP_BACKEND_URL}users/${usersData._id}/experiences/${props.experience._id}`
 
     try {
       let response = await fetch(fetchURL, options)

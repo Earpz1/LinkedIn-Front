@@ -52,7 +52,7 @@ const ProfileHeader = () => {
                 More
               </button>
               <a
-                href={`${process.env.BACKEND_URL}users/profile/63ce71322d24291c669fab27/CV`}
+                href={`${process.env.REACT_APP_BACKEND_URL}users/profile/63ce71322d24291c669fab27/CV`}
               >
                 <button id="moreBtn" className="rounded-pill bottomNavButtons">
                   Get CV

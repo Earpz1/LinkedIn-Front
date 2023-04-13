@@ -15,7 +15,7 @@ const ImageUpload = () => {
 
   function handleSubmit(event) {
     event.preventDefault()
-    const url = `${process.env.BACKEND_URL}users/63ce71322d24291c669fab27/picture`
+    const url = `${process.env.REACT_APP_BACKEND_URL}users/63ce71322d24291c669fab27/picture`
     const formData = new FormData()
     // formData.append("post", selectedFile);
     formData.append('userPicture', selectedFile)
