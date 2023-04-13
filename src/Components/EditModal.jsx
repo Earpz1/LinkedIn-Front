@@ -89,7 +89,7 @@ function EditModal({ data }) {
         'Content-type': 'application/json',
       },
     }
-    const fetchURL = `$${process.env.REACT_APP_BACKEND_URL}users/63ce71322d24291c669fab27`
+    const fetchURL = `${process.env.REACT_APP_BACKEND_URL}users/63ce71322d24291c669fab27`
 
     try {
       let response = await fetch(fetchURL, options)
